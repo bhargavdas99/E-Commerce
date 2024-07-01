@@ -1,0 +1,65 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %}Contact Us{% endblock title %} 
+{% block style %}
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=text],input[type=email],input[type=phone], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}{% endblock style %}
+
+{% block body %}
+<h3 class="text-center my-4">Contact Form</h3>
+
+<div class="container">
+  <form action="/shop/contact/" method="POST"> {% csrf_token %}
+    <label for="name">Enter Your Name</label>
+    <input type="text" id="name" name="name" placeholder="Your name..">
+
+   <label for="email">Enter Your Email</label>
+    <input type="email" id="email" name="email" placeholder="eg: abc@email.com"> 
+
+   <label for="phone">Enter Your Phone Number</label>
+    <input type="phone" id="phone" name="phone" placeholder="eg: 9393xxxxx"> 
+
+    <label for="country">Country</label>
+    <select id="country" name="country">
+      <option value="india">India</option>
+      <option value="canada">Canada</option>
+      <option value="usa">USA</option>
+    </select>
+
+    <label for="desc">Description</label>
+    <textarea id="desc" name="desc" placeholder="Write something.." style="height:200px"></textarea>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+{% endblock body %}
